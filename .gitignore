@@ -1,14 +1,23 @@
+# GitHub Rails defaults
 *.rbc
 *.sassc
 .sass-cache
 capybara-*.html
 .rspec
 .rvmrc
+
+# Ignore bundler config.
 /.bundle
 /vendor/bundle
+
+# Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
+
+# Ignore the default SQLite database.
 /db/*.sqlite3
+/db/*.sqlite3-journal
+
 /public/system/*
 /coverage/
 /spec/tmp/*
