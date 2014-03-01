@@ -1,12 +1,16 @@
 class PostsController < ApplicationController
 
   def create
-    @post = Post.new(post_params)
+    @post = Post.new(guard_params)
     if @post.save
       redirect_to @post
     else
       render 'new'
     end
+  end
+
+  def edit
+    @post = Post.find(params[:id])
   end
 
   def index
@@ -21,9 +25,18 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(guard_params)
+      redirect_to @post
+    else
+      render 'edit'
+    end
+  end
+
   private
 
-  def post_params
+  def guard_params
     params.require(:post).permit(:title, :text)
   end
 
